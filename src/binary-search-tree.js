@@ -16,11 +16,11 @@ class Node {
 }
 
 class BinarySearchTree {
-  constructor(data) {
-    this.root = new Node(data);
+  constructor() {
+    this.root = null;
   }
 
-  root() {
+  getRoot() {
     return this.root;
   }
 
@@ -43,8 +43,14 @@ class BinarySearchTree {
         }
       }
     };
-    searchTree(this.root);
+
+    if (!this.root) {
+      this.root = newNode;
+    } else {
+      searchTree(this.root);
+    }
   }
+
   has(data) {
     const searchTree = (node) => {
       if (!node) return false;
@@ -111,7 +117,16 @@ class BinarySearchTree {
     }
     return currentNode.data;
   }
+
+  findMinNode(node) {
+    while (node && node.left !== null) {
+      node = node.left;
+    }
+    return node;
+  }
 }
+
+
 
 
 module.exports = {
